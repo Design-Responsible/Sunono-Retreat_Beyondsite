@@ -1,0 +1,70 @@
+---
+import { site, nav, navMore } from '../data/content';
+import Icon from './Icon.astro';
+const base = Astro.url.pathname === '/' ? '' : '/';
+const h = (href: string) => (href.startsWith('#') ? `${base}${href}` : href);
+---
+<header class="hdr" data-header>
+  <div class="shade" aria-hidden="true"></div>
+  <div class="bar">
+    <a class="word" href="/">{site.name}</a>
+    <nav class="nav" aria-label="Main">
+      {nav.map((l) => <a href={h(l.href)}>{l.label}</a>)}
+      <div class="more" data-more>
+        <button class="more-btn" aria-expanded="false" aria-haspopup="true">more <Icon name="plus" class="pl" /></button>
+        <div class="more-panel" role="menu">
+          {navMore.map((l) => <a role="menuitem" href={h(l.href)}>{l.label}</a>)}
+        </div>
+      </div>
+    </nav>
+    <a class="book" href={h('#book')}>
+      <span class="from">{site.priceFrom}</span><span class="sep" aria-hidden="true"></span><span class="go">Book</span>
+    </a>
+    <button class="burger" aria-label="Open menu" aria-expanded="false" data-burger><Icon name="menu" /></button>
+  </div>
+  <div class="sheet" data-sheet>
+    {[...nav, ...navMore].map((l) => <a href={h(l.href)}>{l.label}</a>)}
+    <a class="btn btn-cream" href={h('#book')}>Book · {site.priceFrom}</a>
+  </div>
+</header>
+
+<style>
+  .hdr { position: fixed; inset: 0 0 auto 0; z-index: 50; }
+  .shade { position: absolute; inset: 0 0 -40px 0; pointer-events: none; opacity: 0; transition: opacity .5s;
+    background: linear-gradient(180deg, rgb(13 12 10 / .7), rgb(13 12 10 / 0)); }
+  .hdr.scrolled .shade { opacity: 1; }
+  .bar { position: relative; max-width: var(--max); margin: 0 auto; padding: 26px var(--pad); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+  .word { font-size: 26px; font-weight: 450; letter-spacing: -0.02em; line-height: 1; }
+  .nav { display: flex; gap: 34px; font-size: 15px; font-weight: 400; }
+  .nav > a, .more-btn { color: var(--cream); opacity: .86; transition: opacity .25s; }
+  .nav > a:hover, .more-btn:hover { opacity: 1; }
+  .more { position: relative; }
+  .more-btn { display: inline-flex; align-items: center; gap: 8px; }
+  .more-btn .pl { width: 13px; height: 13px; transition: transform .35s var(--ease); }
+  .more.open .pl { transform: rotate(45deg); }
+  .more-panel { position: absolute; top: calc(100% + 18px); left: 50%; translate: -50% 0; min-width: 210px; padding: 10px; border-radius: 18px;
+    background: var(--panel); border: 1px solid var(--glass-line); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    display: flex; flex-direction: column; opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity .3s, transform .3s var(--ease), visibility .3s; }
+  .more.open .more-panel, .more:hover .more-panel, .more:focus-within .more-panel { opacity: 1; visibility: visible; transform: none; }
+  .more-panel a { padding: 9px 12px; border-radius: 10px; font-size: 15px; color: var(--cream-soft); transition: background .2s, color .2s; }
+  .more-panel a:hover { background: var(--card); color: var(--cream); }
+  .book { justify-self: end; display: inline-flex; align-items: center; height: 42px; padding: 0 18px; border-radius: 999px; gap: 16px;
+    background: var(--glass); border: 1px solid var(--glass-line); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); font-size: 15px; transition: background .3s; }
+  .book:hover { background: rgb(239 230 211 / .22); }
+  .from { color: var(--cream-muted); }
+  .sep { width: 1px; height: 18px; background: var(--glass-line); }
+  .go { font-weight: 450; }
+  .burger { display: none; justify-self: end; width: 42px; height: 42px; border-radius: 50%; background: var(--glass); border: 1px solid var(--glass-line); place-items: center; backdrop-filter: blur(14px); }
+  .burger :global(svg) { width: 18px; height: 18px; }
+  .sheet { display: none; }
+  @media (max-width: 1099px) {
+    .nav, .book { display: none; }
+    .bar { grid-template-columns: 1fr auto; padding-top: 18px; padding-bottom: 18px; }
+    .burger { display: grid; }
+    .sheet { display: flex; flex-direction: column; gap: 4px; position: fixed; inset: 0; padding: 96px var(--pad) 40px; background: var(--ink);
+      opacity: 0; visibility: hidden; transition: opacity .35s, visibility .35s; z-index: -1; overflow-y: auto; }
+    .sheet a:not(.btn) { font-size: 30px; font-weight: 300; letter-spacing: -0.02em; padding: 6px 0; }
+    .sheet .btn { margin-top: 24px; align-self: flex-start; }
+    .hdr.menu-open .sheet { opacity: 1; visibility: visible; }
+  }
+</style>

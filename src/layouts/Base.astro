@@ -1,0 +1,27 @@
+---
+import '@fontsource-variable/figtree';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+interface Props { title?: string; description?: string }
+const { title = 'Understorey — template rebuild', description = 'A house in the tall forest.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex" />
+    <meta name="description" content={description} />
+    <link rel="icon" href="/brand/mark.png" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <main id="top"><slot /></main>
+    <Footer />
+    <script>
+      import '../scripts/motion.ts';
+    </script>
+  </body>
+</html>

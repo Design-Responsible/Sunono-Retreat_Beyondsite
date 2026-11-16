@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import { gallery } from '../data/content';
+const photos = [...gallery.photos, ...gallery.photos.slice(0, 5)];
+---
+<Base title="Gallery — template rebuild">
+  <section class="section bg-ink gp">
+    <div class="wrap">
+      <p class="t-label back"><a href="/">← back to the house</a></p>
+      <h1 class="t-headline" data-reveal>all photos</h1>
+      <div class="cols">
+        {photos.map((p, i) => (
+          <figure data-reveal style={`--d:${(i % 3) * 0.06}s`}>
+            <img src={p.src} alt={p.caption} loading="lazy" />
+            <figcaption class="t-caption">{p.caption} · {p.tag}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .gp { padding-top: 160px; }
+  .back { color: var(--cream-muted); margin-bottom: 24px; }
+  .cols { margin-top: 56px; columns: 3 320px; column-gap: 12px; }
+  figure { margin: 0 0 12px; break-inside: avoid; }
+  figure img { width: 100%; border-radius: 8px; }
+  figcaption { padding: 8px 2px 4px; }
+</style>

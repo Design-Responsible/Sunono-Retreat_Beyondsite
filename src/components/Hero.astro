@@ -1,0 +1,53 @@
+---
+import { hero } from '../data/content';
+const SLATS = 12;
+---
+<section class="hero" aria-label="Introduction" data-blinds data-hold="5000" data-dur="1800" data-slats={SLATS}>
+  <div class="stage">
+    {hero.photos.map((p, i) => (
+      <img class={`ph ${i === 0 ? 'first is-on' : ''}`} src={p.src} alt={i === 0 ? p.alt : ''} aria-hidden={i === 0 ? undefined : 'true'}
+        loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : undefined} data-i={i} />
+    ))}
+    <div class="slats" aria-hidden="true"></div>
+  </div>
+  <div class="scrim" aria-hidden="true"></div>
+  <div class="wrap content">
+    <div class="titles">
+      <h1 class="t-display l1">{hero.line1}</h1>
+      <p class="t-display l2">{hero.line2}</p>
+    </div>
+    <div class="meta">
+      <div class="facts">{hero.place.map((f) => <p>{f}</p>)}</div>
+      <div class="facts">{hero.facts.map((f) => <p>{f}</p>)}</div>
+    </div>
+    <div class="bars" aria-hidden="true">
+      {hero.photos.map((_, i) => <span class="bar"><i data-bar={i}></i></span>)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { position: relative; height: 100svh; min-height: 620px; overflow: hidden; background: var(--ink); }
+  .stage { position: absolute; inset: 0; }
+  .ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; visibility: hidden; }
+  .ph.is-on { visibility: visible; }
+  .ph.first { animation: hz 3.2s cubic-bezier(.25,.6,.25,1) both, hf 1.4s ease-out both; }
+  @keyframes hz { from { transform: scale(1.12); } }
+  @keyframes hf { from { opacity: 0; } }
+  .slats { position: absolute; inset: 0; display: flex; pointer-events: none; }
+  .slats :global(span) { flex: 1; height: 100%; background-size: 100vw 100%; background-position: var(--x) 50%; transform-origin: top; transform: scaleY(0); }
+  .scrim { position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(0deg, rgb(13 12 10 / .78) 0%, rgb(13 12 10 / .3) 38%, rgb(13 12 10 / 0) 60%), linear-gradient(180deg, rgb(13 12 10 / .45), rgb(13 12 10 / 0) 22%); }
+  .content { position: absolute; left: 0; right: 0; bottom: 0; padding-bottom: 44px; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 24px 40px; }
+  .titles { grid-column: 1 / -1; }
+  .l1, .l2 { opacity: 0; transform: translateY(40px); animation: rise 1.4s var(--ease-out) forwards; }
+  .l1 { animation-delay: .5s; }
+  .l2 { animation-delay: .65s; color: var(--cream); }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  .meta { display: flex; gap: 10px 36px; flex-wrap: wrap; font-size: 15px; color: var(--cream-soft); opacity: 0; animation: rise 1.2s .95s var(--ease-out) forwards; }
+  .facts { display: flex; gap: 6px; }
+  .bars { display: flex; gap: 6px; align-self: center; }
+  .bar { width: 44px; height: 2px; background: rgb(239 230 211 / .22); border-radius: 2px; overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--cream); transform: scaleX(0); transform-origin: left; }
+  @media (max-width: 700px) { .content { grid-template-columns: 1fr; padding-bottom: 28px; } .bars { order: -1; } }
+</style>

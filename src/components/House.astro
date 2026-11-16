@@ -1,0 +1,58 @@
+---
+import { house } from '../data/content';
+import SectionLabel from './SectionLabel.astro';
+const tokens = house.sentence.split(/\s+/);
+---
+<section id="house" class="section house">
+  <div class="ground" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="top">
+      <div class="section-head">
+        <SectionLabel n="01" label="the house" />
+        <h2 class="t-statement words" data-words>
+          {tokens.map((t) => {
+            const m = t.match(/^\{photo:(\d+)\}(.*)$/);
+            if (m) return <><span class="chip w" aria-hidden="true"><img src={house.chips[+m[1]]} alt="" loading="lazy" /></span>{m[2] && <span class="w">{m[2]}</span>}{' '}</>;
+            return <><span class="w">{t}</span>{' '}</>;
+          })}
+        </h2>
+      </div>
+      <aside class="glance" data-reveal>
+        <p class="t-label lab">{house.glanceLabel}</p>
+        <div class="pills">{house.glance.map((g) => <p class="pill">{g}</p>)}</div>
+      </aside>
+    </div>
+    <div class="bottom">
+      <p class="t-lead intro" data-reveal>{house.intro}</p>
+      <dl class="facts">
+        {house.facts.map(([k, v], i) => (
+          <div class="fact" data-reveal style={`--d:${i * 0.05}s`}><dt class="t-label">{k}</dt><dd>{v}</dd></div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>
+
+<style>
+  .house { overflow: hidden; }
+  .ground { position: absolute; inset: 0; background: var(--moss); }
+  .wrap { position: relative; }
+  .top { display: grid; grid-template-columns: 1fr 300px; gap: 40px 80px; align-items: start; }
+  h2 { max-width: 18ch; }
+  .chip { display: inline-block; width: 1.5em; height: .8em; border-radius: .4em; overflow: hidden; vertical-align: -.04em; margin: 0 .04em; }
+  .chip img { width: 100%; height: 100%; object-fit: cover; }
+  .glance { padding-top: 80px; }
+  .lab { color: var(--cream-muted); margin-bottom: 16px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .bottom { margin-top: clamp(72px, 9vw, 130px); display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px 80px; align-items: start; }
+  .intro { max-width: 24ch; }
+  .facts { margin: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 40px; }
+  .fact { padding: 18px 0; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; }
+  .fact dt { color: var(--cream-muted); }
+  .fact dd { margin: 0; font-size: 18px; }
+  @media (max-width: 960px) {
+    .top, .bottom { grid-template-columns: 1fr; }
+    .glance { padding-top: 0; }
+  }
+  @media (max-width: 520px) { .facts { grid-template-columns: 1fr; } }
+</style>

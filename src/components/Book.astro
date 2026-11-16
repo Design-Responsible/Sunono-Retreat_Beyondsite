@@ -1,0 +1,116 @@
+---
+import { book, guestbook } from '../data/content';
+import SectionLabel from './SectionLabel.astro';
+import Icon from './Icon.astro';
+---
+<section id="book" class="section bg-rust bk">
+  <div class="wrap">
+    <div class="grid">
+      <div class="left">
+        <div class="section-head">
+          <SectionLabel n="08" label="pricing & contact" />
+          <h2 class="t-headline" data-reveal>{book.title}</h2>
+          <p class="t-body-l intro" data-reveal>{book.intro}</p>
+        </div>
+        <div class="host" data-reveal>
+          <img src={guestbook.host.photo} alt="Tom, the host" loading="lazy" />
+          <div><p>{book.host[0]}</p><p class="t-label">{book.host[1]}</p></div>
+        </div>
+        <div class="pills" data-reveal>{book.pills.map((p) => <p class="pill">{p}</p>)}</div>
+      </div>
+
+      <form class="price" aria-label="Price for your dates" data-price={book.price} data-fees={JSON.stringify(book.fees)} data-reveal onsubmit="return false">
+        <p class="t-label soft">Book on Airbnb</p>
+        <p class="rate"><span>${book.price}</span> <small>/ night</small></p>
+        <p class="t-small">2 nights minimum · up to 4 guests</p>
+        <label class="field date">
+          <span class="t-label">Arrive</span>
+          <span class="date-row"><span data-arrive-text></span><span class="to t-small" data-depart-text></span></span>
+          <input type="date" data-arrive aria-label="Arrival date" />
+        </label>
+        <div class="steps">
+          <div class="field step"><span class="t-label">Nights</span>
+            <div class="ctl"><button type="button" data-dec="nights" aria-label="One night fewer"><Icon name="minus" /></button><output data-nights>3</output><button type="button" data-inc="nights" aria-label="One night more"><Icon name="plus" /></button></div></div>
+          <div class="field step"><span class="t-label">Guests</span>
+            <div class="ctl"><button type="button" data-dec="guests" aria-label="One guest fewer"><Icon name="minus" /></button><output data-guests>2</output><button type="button" data-inc="guests" aria-label="One guest more"><Icon name="plus" /></button></div></div>
+        </div>
+        <div class="sum" aria-live="polite">
+          <div><span data-line-label></span><span data-line-total></span></div>
+          {book.fees.map(([n, v]) => <div><span>{n}</span><span>${v}</span></div>)}
+          <div class="total"><span>Total</span><span data-total></span></div>
+          <p class="t-caption">Estimate before Airbnb’s service fee.</p>
+        </div>
+        <a class="btn btn-cream wide" data-airbnb href="https://www.airbnb.com/" target="_blank" rel="noopener">Check availability on Airbnb <Icon name="arrow" class="arrow" /></a>
+      </form>
+
+      <form id="ask-tom" class="ask" aria-label="Ask Tom" data-reveal style="--d:.1s" onsubmit="event.preventDefault(); this.querySelector('[data-sent]').hidden=false;">
+        <p class="t-label soft">Ask Tom</p>
+        <p class="t-title">a question first?</p>
+        <p class="t-small soft">About your dates</p>
+        <label class="field"><span class="t-label">Name</span><input name="name" placeholder="Your name" autocomplete="name" required /></label>
+        <label class="field"><span class="t-label">Email</span><input name="email" type="email" placeholder="you@example.com" autocomplete="email" required /></label>
+        <label class="field grow"><span class="t-label">Message</span><textarea name="message" rows="4" placeholder="Anything Tom should know?"></textarea></label>
+        <button class="btn btn-dark wide" type="submit">Send to Tom <Icon name="arrow" class="arrow" /></button>
+        <p class="t-small soft" data-sent hidden>Thanks. (Demo form: not connected yet.)</p>
+      </form>
+    </div>
+
+    <div class="day" role="group" aria-label="A day at the house" data-day>
+      {book.day.map((d, i) => (
+        <button class={`slot ${i === 2 ? 'on' : ''}`} data-slot={i}>
+          <img src={d.src} alt={d.caption} loading="lazy" />
+          <span class="time">{d.time}</span>
+          <span class="cap t-small">{d.caption}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 400px 400px; gap: 12px; align-items: start; }
+  .left { display: flex; flex-direction: column; gap: 32px; padding-right: 40px; }
+  .intro { max-width: 30ch; }
+  .host { display: flex; gap: 16px; align-items: center; }
+  .host img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; }
+  .host .t-label { color: var(--cream-muted); margin-top: 4px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; max-width: 320px; }
+  .pills .pill { background: rgb(239 230 211 / .1); }
+  .price, .ask { border-radius: var(--radius); padding: 28px; display: flex; flex-direction: column; gap: 12px; }
+  .price { background: var(--rust-deep); }
+  .soft { color: var(--cream-muted); }
+  .rate { display: flex; align-items: baseline; gap: 8px; }
+  .rate span { font-size: 44px; font-weight: 300; letter-spacing: -0.02em; line-height: 1.1; }
+  .rate small { font-size: 15px; color: var(--cream-soft); }
+  .field { position: relative; display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); }
+  .field .t-label { font-size: 10px; color: var(--cream-muted); }
+  .date { cursor: pointer; }
+  .date-row { display: flex; justify-content: space-between; align-items: baseline; font-size: 16px; }
+  .date input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
+  .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .ctl { display: flex; align-items: center; justify-content: space-between; }
+  .ctl button { width: 28px; height: 28px; border-radius: 50%; background: var(--cream); color: var(--rust); display: grid; place-items: center; }
+  .ctl button :global(svg) { width: 12px; height: 12px; }
+  .ctl output { font-size: 16px; }
+  .sum { display: flex; flex-direction: column; gap: 6px; font-size: 15px; color: var(--cream-soft); padding-top: 4px; }
+  .sum > div { display: flex; justify-content: space-between; }
+  .total { border-top: 1px solid var(--line); padding-top: 12px; margin-top: 6px; color: var(--cream); font-size: 17px; }
+  .wide { width: 100%; justify-content: center; height: 46px; margin-top: 6px; }
+  .ask { background: var(--cream); color: var(--ink-text); }
+  .ask .soft { color: var(--ink-soft); }
+  .ask .field { border-color: var(--ink-line); background: var(--ink-field); }
+  .ask .field .t-label { color: var(--ink-soft); }
+  .ask input, .ask textarea { border: 0; background: transparent; font: inherit; font-size: 16px; color: var(--ink-text); outline: none; resize: none; padding: 0; }
+  .ask input::placeholder, .ask textarea::placeholder { color: rgb(13 12 10 / .5); }
+  .ask .field:focus-within { border-color: rgb(13 12 10 / .4); }
+  .day { margin-top: 56px; display: flex; gap: 8px; height: clamp(320px, 32vw, 440px); }
+  .slot { position: relative; flex: 1; overflow: hidden; border-radius: 8px; text-align: left; transition: flex 1s var(--ease-out); }
+  .slot.on { flex: 5; }
+  .slot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .slot::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgb(13 12 10 / .55), rgb(13 12 10 / 0) 45%); }
+  .time { position: absolute; left: 16px; bottom: 40px; z-index: 1; font-size: clamp(22px, 2vw, 28px); font-weight: 300; }
+  .cap { position: absolute; left: 16px; bottom: 14px; z-index: 1; color: var(--cream-soft); white-space: nowrap; opacity: 0; transition: opacity .6s .2s; }
+  .slot.on .cap { opacity: 1; }
+  @media (max-width: 1180px) { .grid { grid-template-columns: 1fr 1fr; } .left { grid-column: 1 / -1; padding: 0 0 32px; } }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } .day { flex-direction: column; height: 680px; } }
+</style>

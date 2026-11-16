@@ -1,0 +1,59 @@
+---
+import { know } from '../data/content';
+import SectionLabel from './SectionLabel.astro';
+import Icon from './Icon.astro';
+---
+<section id="know" class="section bg-ink know">
+  <div class="wrap">
+    <div class="section-head">
+      <SectionLabel n="07" label="good to know" />
+      <h2 class="t-headline" data-reveal>{know.title}</h2>
+    </div>
+    <div class="grid">
+      <div class="left">
+        <div class="cards" aria-label="Check-in, house rules and cancellation">
+          {know.cards.map(([lab, big, small], i) => (
+            <article class="card" data-reveal style={`--d:${i * 0.07}s`}>
+              <p class="t-label">{lab}</p>
+              <p class="big">{big[0]}<br />{big[1]}</p>
+              <p class="t-small">{small}</p>
+            </article>
+          ))}
+        </div>
+        <div class="ask" data-reveal>
+          <p class="t-small">{know.askLine}</p>
+          <a class="btn btn-cream" href="#ask-tom">Message Tom <Icon name="arrow" class="arrow" /></a>
+        </div>
+      </div>
+      <div class="faq">
+        {know.faq.map(([q, a], i) => (
+          <div class="item" data-acc data-reveal style={`--d:${Math.min(i, 5) * 0.05}s`}>
+            <button class="q" aria-expanded="false" aria-controls={`faq-${i}`} id={`faq-b${i}`}>
+              <span>{q}</span><Icon name="plus" class="pl" />
+            </button>
+            <div class="a" id={`faq-${i}`} role="region" aria-labelledby={`faq-b${i}`}><div><p class="t-body-l">{a}</p></div></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .grid { margin-top: 56px; display: grid; grid-template-columns: 348px 1fr; gap: 56px 92px; align-items: start; }
+  .cards { display: flex; flex-direction: column; gap: 10px; }
+  .card { background: var(--card); border-radius: var(--radius); padding: 30px 28px; display: flex; flex-direction: column; gap: 14px; }
+  .card .t-label { color: var(--cream-muted); }
+  .big { font-size: 28px; line-height: 1.35; font-weight: 300; }
+  .ask { margin-top: 40px; display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+  .item { border-bottom: 1px solid var(--line); }
+  .q { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 26px 0; text-align: left;
+    font-size: clamp(22px, 2.1vw, 30px); font-weight: 300; letter-spacing: -0.01em; }
+  .q :global(.pl) { width: 18px; height: 18px; flex-shrink: 0; transition: transform .4s var(--ease); }
+  .item.open .q :global(.pl) { transform: rotate(45deg); }
+  .a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .5s var(--ease); }
+  .a > div { overflow: hidden; }
+  .a p { padding-bottom: 28px; max-width: 56ch; }
+  .item.open .a { grid-template-rows: 1fr; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,0 +1,99 @@
+---
+import { gallery } from '../data/content';
+import SectionLabel from './SectionLabel.astro';
+import Icon from './Icon.astro';
+const p = gallery.photos;
+const Tile = (i: number) => p[i];
+---
+<section id="gallery" class="section bg-ink gal">
+  <div class="wrap">
+    <div class="head-row">
+      <div class="section-head">
+        <SectionLabel n="03" label="gallery" />
+        <h2 class="t-headline" data-reveal>{gallery.title}</h2>
+      </div>
+      <p class="t-body-l intro" data-reveal>{gallery.intro}</p>
+    </div>
+
+    <div class="lead-row">
+      <div class="lead" data-reveal>
+        <p class="t-lead">{gallery.lead}</p>
+        <a class="link" href="/gallery">see all photos <Icon name="arrow" class="arrow" /></a>
+      </div>
+      <p class="t-small body" data-reveal>{gallery.body}</p>
+    </div>
+
+    <div class="grid" data-lightbox-group>
+      <div class="row two">
+        {[0, 1].map((i) => (
+          <button class="tile tall" data-lightbox={i} data-reveal style={`--d:${i * 0.08}s`}>
+            <img src={Tile(i).src} alt={Tile(i).caption} loading="lazy" />
+            <span class="cap"><span>{Tile(i).caption}</span><em class="t-label">{Tile(i).tag}</em></span>
+          </button>
+        ))}
+      </div>
+      <div class="row mix">
+        <button class="tile big" data-lightbox="2" data-reveal>
+          <img src={Tile(2).src} alt={Tile(2).caption} loading="lazy" />
+          <span class="cap"><span>{Tile(2).caption}</span><em class="t-label">{Tile(2).tag}</em></span>
+        </button>
+        <div class="quad">
+          {[3, 4, 5].map((i, k) => (
+            <button class="tile" data-lightbox={i} data-reveal style={`--d:${k * 0.06}s`}>
+              <img src={Tile(i).src} alt={Tile(i).caption} loading="lazy" />
+              <span class="cap"><span>{Tile(i).caption}</span><em class="t-label">{Tile(i).tag}</em></span>
+            </button>
+          ))}
+          <a class="tile all" href="/gallery" data-reveal style="--d:.18s">
+            <img src={Tile(6).src} alt="" loading="lazy" />
+            <span class="all-pill t-label">all photos <Icon name="arrow" class="arrow" /></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <dialog class="lightbox" data-lightbox-dialog aria-label="Photo viewer">
+    <button class="lb-close round-btn" data-lb-close aria-label="Close"><Icon name="close" /></button>
+    <figure><div class="lb-slot" data-lb-slot></div><figcaption class="t-small" data-lb-cap></figcaption></figure>
+    <button class="lb-nav prev round-btn" data-lb-prev aria-label="Previous photo"><Icon name="left" /></button>
+    <button class="lb-nav next round-btn" data-lb-next aria-label="Next photo"><Icon name="right" /></button>
+  </dialog>
+</section>
+
+<style>
+  .intro { max-width: 34ch; }
+  .lead-row { margin: clamp(56px, 7vw, 96px) 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px 80px; align-items: end; }
+  .lead { display: flex; flex-direction: column; gap: 22px; align-items: flex-start; }
+  .lead .t-lead { max-width: 22ch; }
+  .link { display: inline-flex; gap: 10px; align-items: center; font-size: 15px; border-bottom: 1px solid var(--line); padding-bottom: 4px; }
+  .link :global(.arrow) { width: 14px; height: 14px; transition: transform .3s var(--ease); }
+  .link:hover :global(.arrow) { transform: translateX(3px); }
+  .body { max-width: 46ch; justify-self: end; }
+  .grid { display: flex; flex-direction: column; gap: 12px; }
+  .row.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .row.mix { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .quad { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 12px; }
+  .tile { position: relative; display: block; border-radius: 8px; overflow: hidden; background: #1b1915; text-align: left; }
+  .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out); }
+  .tile:hover img { transform: scale(1.04); }
+  .tall { aspect-ratio: 1 / 1; }
+  .big { aspect-ratio: 1 / 0.86; }
+  .cap { position: absolute; inset: auto 0 0 0; padding: 40px 18px 16px; display: flex; justify-content: space-between; gap: 12px; align-items: end;
+    background: linear-gradient(0deg, rgb(13 12 10 / .7), rgb(13 12 10 / 0)); font-size: 15px; opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .5s var(--ease); }
+  .cap em { font-style: normal; color: var(--cream-muted); font-size: 11px; }
+  .tile:hover .cap, .tile:focus-visible .cap { opacity: 1; transform: none; }
+  .all { display: grid; place-items: center; }
+  .all img { position: absolute; inset: 0; filter: brightness(.55); }
+  .all-pill { position: relative; display: inline-flex; gap: 10px; align-items: center; padding: 10px 16px; border-radius: 999px; background: rgb(13 12 10 / .6); border: 1px solid var(--glass-line); }
+  .all-pill :global(.arrow) { width: 14px; height: 14px; }
+  .lightbox { width: 100vw; height: 100vh; max-width: none; max-height: none; margin: 0; border: 0; padding: 0; background: rgb(13 12 10 / .96); color: var(--cream); }
+  .lightbox[open] { display: grid; place-items: center; }
+  .lightbox::backdrop { background: transparent; }
+  .lightbox figure { margin: 0; display: flex; flex-direction: column; gap: 14px; align-items: center; }
+  .lightbox :global(.lb-slot img) { max-width: 86vw; max-height: 80vh; border-radius: 8px; object-fit: contain; }
+  .lb-close { position: absolute; top: 24px; right: 24px; }
+  .lb-nav { position: absolute; top: 50%; translate: 0 -50%; }
+  .prev { left: 24px; } .next { right: 24px; }
+  @media (max-width: 800px) { .lead-row, .row.mix { grid-template-columns: 1fr; } .body { justify-self: start; } }
+</style>
