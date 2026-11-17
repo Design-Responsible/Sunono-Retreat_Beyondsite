@@ -11,7 +11,8 @@ export const site = {
   cta: 'Experience with us', // header button
   email: 'stay@understorey.example',
   phone: '+61 400 000 000',
-  address: ['12 Example Road', 'Huon Valley TAS 7109'],
+  address: ['Fossoway Lodge', 'Fossoway, Carnbo, Kinross'],
+  mapUrl: 'https://www.google.com/maps/search/?api=1&query=Fossoway+Lodge+Fossoway+Kinross',
   priceFrom: 'from $420 / night',
 };
 

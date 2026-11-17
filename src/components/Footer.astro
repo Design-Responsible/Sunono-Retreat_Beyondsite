@@ -18,7 +18,7 @@ const base = Astro.url.pathname === '/' ? '' : '/';
       <div class="col"><p class="t-label h">The house</p>{footer.house.map(([l, h]) => <a class="sm" href={`${base}${h}`}>{l}</a>)}</div>
       <div class="col"><p class="t-label h">Socials</p>{footer.socials.map(([l, h]) => <a class="sm" href={h} target="_blank" rel="noopener">{l}</a>)}</div>
       <div class="col"><p class="t-label h">Getting here</p>{footer.gettingHere.map((l) => <p class="sm">{l}</p>)}
-        <a class="sm dir" href="https://www.google.com/maps/search/?api=1&query=Huon+Valley+Tasmania" target="_blank" rel="noopener">Directions <Icon name="arrow" class="arrow" /></a></div>
+        <a class="sm dir" href={site.mapUrl} target="_blank" rel="noopener">Directions <Icon name="arrow" class="arrow" /></a></div>
     </div>
     <a class="giant" href="#top" aria-label={`${site.name}, back to top`} data-giant><span>{site.name}</span></a>
     <div class="base">
