@@ -9,9 +9,12 @@
   --rust: #4a1f15;       /* earth */
   --rust-deep: #5a2c21;  /* cards on rust */
   --night: #142029;      /* water */
-  --navy: #282e63;       /* brand navy (palette) */
-  --red: #e55454;        /* brand red (palette) */
-  --lilac: #cfbdcd;      /* brand lilac (guidelines cover) */
+  /* brand palette (exact, from the client) */
+  --navy: #282f64;
+  --red: #d63c42;
+  --mint: #c7f2e3;
+  --lilac: #c2abc2;
+  --pale-blue: #c3d9db;
 
   /* text on dark */
   --cream: #efe6d3;
@@ -77,13 +80,14 @@ p, h1, h2, h3 { margin: 0; font-weight: inherit; }
 .bg-rust { background: var(--rust); }
 /* Brand lilac ground: text goes navy (brand rule), lines and glass in navy */
 .bg-lilac { background: var(--lilac); color: var(--navy);
-  --cream: var(--navy); --cream-bright: var(--navy); --cream-soft: rgb(40 46 99 / .9); --cream-muted: rgb(40 46 99 / .78);
-  --line: rgb(40 46 99 / .35); --glass: rgb(40 46 99 / .08); --glass-line: rgb(40 46 99 / .3); --card: rgb(40 46 99 / .06); }
+  --cream: var(--navy); --cream-bright: var(--navy); --cream-soft: rgb(40 47 100 / .9); --cream-muted: rgb(40 47 100 / .78);
+  --line: rgb(40 47 100 / .35); --glass: rgb(40 47 100 / .08); --glass-line: rgb(40 47 100 / .3); --card: rgb(40 47 100 / .06); }
 /* Brand red ground: text goes white (brand rule), lines and glass in white */
 .bg-red { background: var(--red); color: #fff;
   --cream: #fff; --cream-bright: #fff; --cream-soft: rgb(255 255 255 / .9); --cream-muted: rgb(255 255 255 / .86);
   --line: rgb(255 255 255 / .45); --glass: rgb(255 255 255 / .16); --glass-line: rgb(255 255 255 / .4); --card: rgb(255 255 255 / .1); }
 .bg-night { background: var(--night); }
+.bg-navy { background: var(--navy); }
 .section-head { display: flex; flex-direction: column; gap: 28px; }
 .head-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-wrap: wrap; }
 
