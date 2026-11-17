@@ -117,28 +117,28 @@ export const amenities = {
 };
 
 export const location = {
-  title: 'where it is',
-  intro: "In the Huon Valley, south-west of Hobart, at the end of a quiet gravel road. Here are a few of Tom’s favourites nearby, nearest first; there’s a longer list waiting in the house.",
-  mapUrl: 'https://www.google.com/maps/search/?api=1&query=Huon+Valley+Tasmania',
+  title: 'what’s nearby',
+  // Distances are straight-line from Fossoway Lodge (OS grid NO 0155 0194), rounded.
+  // Gleneagles and St Andrews from the Fossoway estate listing. Check before launch.
+  intro: 'Fossoway Lodge sits on the southern edge of the Ochil Hills, between Kinross and the Hillfoots villages. Here are a few of the best finds nearby, nearest first. Distances are approximate, as the crow flies.',
+  mapUrl: 'https://www.google.com/maps/search/?api=1&query=Fossoway+Lodge+Fossoway+Kinross',
   stops: [
-    ['start', 'Understorey', 'Start here.'],
-    ['from the door', 'Creek walk', 'A forty-minute loop down to the falls below the house. Best after rain.'],
-    ['15 min', 'Cider & cellar doors', 'The valley’s orchards, open most weekends from autumn.'],
-    ['15 min', 'Huonville', 'Supermarket, bakery and a very good greengrocer.'],
-    ['25 min', 'Cygnet', 'A small town of cafés, galleries and a Sunday market.'],
-    ['25 min', 'Geeveston', 'The gateway to the southern forests, with a good bakery.'],
-    ['35 min', 'Tahune Airwalk', 'A treetop walkway where the Huon and Picton rivers meet.'],
-    ['40 min', 'Hartz Peak', 'Alpine lakes and a half-day summit walk.'],
-    ['45 min', 'Bruny Island ferry', 'From Kettering, for oysters, cheese and a lighthouse.'],
-    ['50 min', 'Salamanca Market', 'Saturday mornings in Hobart, by the water.'],
-    ['1 h', 'Hastings Caves', 'Dolomite caves and a warm thermal pool.'],
-    ['1 h 10', 'MONA', 'Hobart’s famous underground museum, by ferry from the city.'],
+    ['start', 'Sunono Retreat', 'Fossoway Lodge. Start here.'],
+    ['1 mile', 'The Inn at Muckhart', 'An early 18th-century coaching inn at Pool of Muckhart, just to the west.'],
+    ['1.5 miles', 'Rumbling Bridge Gorge', 'The River Devon drops into a mossy canyon of waterfalls and rapids. Free, always open.'],
+    ['1.5 miles', 'Crook of Devon', 'A gentle 4-mile riverside loop that takes in the gorge from both banks.'],
+    ['3.7 miles', 'Castle Campbell & Dollar Glen', '“Castle Gloom”, above a wooded gorge between the Burns of Care and Sorrow.'],
+    ['4.7 miles', 'Glendevon reservoirs', 'Quiet walks into the Ochils, with the old drovers’ inn at Tormaukin on the way.'],
+    ['6.6 miles', 'Lochleven Castle', 'By boat from Kinross Pier to the island where Mary, Queen of Scots, was held. April to September.'],
+    ['6.6 miles', 'Loch Leven Heritage Trail', 'A level, traffic-free 13-mile path around the loch, with cafés along the way.'],
+    ['9 miles', 'Gleneagles', 'North over the Ochils for golf and the famous hotel.'],
+    ['35 miles', 'St Andrews', 'East to the old town, the sands and the home of golf.'],
   ],
   band: {
     photo: '/images/estate.jpg',
-    places: [['Huonville', '15 min'], ['Hartz Mountains', '40 min'], ['Hobart', '50 min'], ['MONA', '1 h 10']],
-    line1: 'fifteen minutes to the river,',
-    line2: 'fifty to Hobart.',
+    places: [['Rumbling Bridge', '1.5 mi'], ['Castle Campbell', '3.7 mi'], ['Loch Leven', '6.6 mi'], ['Gleneagles', '9 mi']],
+    line1: 'a mile and a half to the gorge,',
+    line2: 'nine to Gleneagles.',
   },
 };
 
