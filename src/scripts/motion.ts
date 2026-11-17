@@ -43,16 +43,20 @@ $$('[data-blinds]').forEach((hero) => {
     if (nxt === 0) runBar(-1);
     if (reduce) { imgs[i].classList.remove('is-on'); imgs[nxt].classList.add('is-on'); i = nxt; runBar(i); return schedule(); }
     slatsEl.innerHTML = '';
+    // Each slat shows its own strip of one "object-fit: cover" image of the whole hero,
+    // so the photo is never stretched, whatever the screen shape.
+    const im = imgs[nxt], W = hero.clientWidth, H = hero.clientHeight;
+    const ir = (im.naturalWidth || 16) / (im.naturalHeight || 9);
+    const cw = W / H > ir ? W : H * ir, ch = W / H > ir ? W / ir : H;
+    const ox = (W - cw) / 2, oy = (H - ch) * 0.6, sw = W / n;
     for (let s = 0; s < n; s++) {
       const sl = document.createElement('span');
-      sl.style.backgroundImage = `url(${imgs[nxt].currentSrc || imgs[nxt].src})`;
-      sl.style.backgroundSize = 'cover';
-      sl.style.backgroundPosition = `${(s / (n - 1)) * 100}% 50%`;
+      sl.style.backgroundImage = `url(${im.currentSrc || im.src})`;
+      sl.style.backgroundSize = `${cw}px ${ch}px`;
+      sl.style.backgroundPosition = `${ox - s * sw}px ${oy}px`;
       sl.style.transition = `transform ${dur * 0.55}ms cubic-bezier(.65,0,.35,1) ${(s / n) * dur * 0.45}ms`;
       slatsEl.appendChild(sl);
     }
-    // background-size cover per slat would rescale each slat; use one wide image per slat instead
-    $$<HTMLElement>('span', slatsEl).forEach((sl, s) => { sl.style.backgroundSize = `${n * 100}% 100%`; sl.style.backgroundPosition = `${(s / (n - 1)) * 100}% 50%`; });
     requestAnimationFrame(() => requestAnimationFrame(() => $$<HTMLElement>('span', slatsEl).forEach((sl) => (sl.style.transform = 'scaleY(1)'))));
     setTimeout(() => { imgs[i].classList.remove('is-on'); imgs[nxt].classList.add('is-on'); slatsEl.innerHTML = ''; i = nxt; }, dur + 40);
     runBar(nxt);
