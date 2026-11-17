@@ -34,7 +34,7 @@ export const navMore = [
 export const hero = {
   line1: 'A home can speak',
   line2: 'different languages',
-  sub: 'Some very quiet, some bold with loud character. Whatever the space you may be looking for, Sunono has a bit of everything.',
+  sub: 'Some very quiet, some bold with loud character. Whatever the space you’re looking for, Sunono Retreat has a bit of everything.',
   place: ['Scottish countryside', '· 200 years old'],
   facts: ['15 hectares', '· a private garden and lake'],
   photos: [
