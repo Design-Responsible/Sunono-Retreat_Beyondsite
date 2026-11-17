@@ -133,6 +133,7 @@ export const location = {
     ['6.6 miles', 'Loch Leven Heritage Trail', 'A level, traffic-free 13-mile path around the loch, with cafés along the way.'],
     ['9 miles', 'Gleneagles', 'North over the Ochils for golf and the famous hotel.'],
     ['35 miles', 'St Andrews', 'East to the old town, the sands and the home of golf.'],
+    ['35 miles', 'St Andrews Castle', 'A ruined bishops’ palace on the cliffs above the North Sea, with its rock-cut bottle dungeon.'],
   ],
   band: {
     photo: '/images/estate.jpg',
