@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import { gallery } from '../data/content';
-const photos = [...gallery.photos, ...gallery.photos.slice(0, 5)];
+const photos = gallery.photos;
 ---
 <Base title="Gallery — template rebuild">
   <section class="section bg-ink gp">

@@ -40,17 +40,17 @@ export const hero = {
   facts: ['15 hectares', '· a private garden and lake'],
   photos: [
     { src: '/images/estate.jpg', alt: 'The house, its lawn and the lake from above' },
-    { src: '/images/house.jpg', alt: 'The house' },
     { src: '/images/house-front.jpg', alt: 'The front of the Victorian house through the larch branches' },
-    { src: '/images/garden.jpg', alt: 'The garden' },
+    { src: '/images/entrance.jpg', alt: 'The stone entrance porch and slate roof' },
+    { src: '/images/grill-hut.jpg', alt: 'The red grill hut in the garden, beside a rhododendron in flower' },
   ],
 };
 
 export const house = {
   // Words; a {photo:n} token drops a small inline photo chip into the sentence.
   sentence:
-    'Explore our luxurious retreats in a secluded 200-year-old {photo:0} Victorian house, set on a 15-hectare estate {photo:1} with a private garden {photo:2} and lake {photo:3}.',
-  chips: ['/images/house.jpg', '/images/estate.jpg', '/images/garden.jpg', '/images/lake.jpg'],
+    'Explore our luxurious retreats in a secluded 200-year-old {photo:0} Victorian house, set on a 15-hectare estate {photo:1} with a private garden and lake.',
+  chips: ['/images/globe.jpg', '/images/bench.jpg'],
   glanceLabel: 'At a glance',
   glance: ['Two couples', 'A small family', 'Long weekends', 'Working remotely', 'Slow mornings'],
   intro:
@@ -90,17 +90,17 @@ export const plan = {
 
 export const gallery = {
   title: 'a look inside',
-  intro: 'Photos of the house, its rooms and the forest around it.',
-  lead: 'A house lifted into the canopy, with the forest in every window.',
-  body: 'Photographed through a year at the house: winter mist lifting off the gully, long summer evenings on the deck, rain on the glass, and the small details you only notice after a few days.',
+  intro: 'Photos of the house, its rooms and the estate around it.',
+  lead: 'A Victorian house with the estate in every window.',
+  body: 'Rooms to sleep and write in, a bay window to read in, instruments to play and a table to gather round.',
   photos: [
-    { src: '/images/wing.jpg', caption: 'a window seat for rainy days', tag: 'living' },
-    { src: '/images/trees.jpg', caption: 'the ensuite', tag: 'bathing' },
-    { src: '/images/house.jpg', caption: 'a suite, morning light', tag: 'suites' },
-    { src: '/images/lawn.jpg', caption: 'the kitchen island', tag: 'kitchen & dining' },
-    { src: '/images/lake.jpg', caption: 'the outdoor bath, evening', tag: 'bathing' },
-    { src: '/images/garden.jpg', caption: 'the suspended fireplace', tag: 'living' },
-    { src: '/images/path.jpg', caption: 'dinner by candlelight', tag: 'kitchen & dining' },
+    { src: '/images/window-seat.jpg', caption: 'a window seat over the garden', tag: 'reading' },
+    { src: '/images/bedroom-welcome.jpg', caption: 'a welcome box on the bed', tag: 'rooms' },
+    { src: '/images/bedroom-desk.jpg', caption: 'a writing desk under the eaves', tag: 'rooms' },
+    { src: '/images/afternoon-tea.jpg', caption: 'afternoon tea', tag: 'food' },
+    { src: '/images/instruments.jpg', caption: 'an oud and two guitars', tag: 'music' },
+    { src: '/images/bay-window.jpg', caption: 'the bay window', tag: 'living' },
+    { src: '/images/supper.jpg', caption: 'prawns and rice for supper', tag: 'food' },
   ],
 };
 
@@ -136,7 +136,7 @@ export const location = {
     ['35 miles', 'St Andrews Castle', 'A ruined bishops’ palace on the cliffs above the North Sea, with its rock-cut bottle dungeon.'],
   ],
   band: {
-    photo: '/images/estate.jpg',
+    photo: '', // empty until a countryside photo arrives; the band shows in navy
     places: [['Rumbling Bridge', '1.5 mi'], ['Castle Campbell', '3.7 mi'], ['Loch Leven', '6.6 mi'], ['Gleneagles', '9 mi']],
     line1: 'a mile and a half to the gorge,',
     line2: 'nine to Gleneagles.',

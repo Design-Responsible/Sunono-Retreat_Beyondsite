@@ -32,8 +32,8 @@ const b = location.band;
       </div>
     </div>
 
-    <div class="band" data-band data-reveal>
-      <img src={b.photo} alt="The countryside around the house" loading="lazy" />
+    <div class:list={['band', { plain: !b.photo }]} data-band data-reveal>
+      {b.photo && <img src={b.photo} alt="The countryside around the house" loading="lazy" />}
       <div class="band-shade" aria-hidden="true"></div>
       <p class="line l1">{b.line1}</p>
       <span class="rule" aria-hidden="true"></span>
@@ -59,6 +59,8 @@ const b = location.band;
   .name { font-size: 18px; line-height: 1.35; }
   .arrows { display: flex; justify-content: flex-end; gap: 8px; margin-top: 40px; }
   .band { position: relative; margin-top: 64px; border-radius: 8px; overflow: hidden; aspect-ratio: 16 / 8.6; min-height: 460px; }
+  .band.plain { background: var(--navy); }
+  .band.plain .band-shade { display: none; }
   .band img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .band-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(13 12 10 / .5), rgb(13 12 10 / 0) 40%, rgb(13 12 10 / 0) 60%, rgb(13 12 10 / .62)); }
   .line { font-family: var(--font-head); position: absolute; font-size: clamp(30px, 4.4vw, 64px); font-weight: 300; letter-spacing: -0.025em; line-height: 1; }
