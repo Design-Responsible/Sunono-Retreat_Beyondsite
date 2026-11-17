@@ -136,6 +136,8 @@ export const location = {
     ['35 miles', 'St Andrews Castle', 'A ruined bishops’ palace on the cliffs above the North Sea, with its rock-cut bottle dungeon.'],
   ],
   band: {
+    // PLACEHOLDER PHOTOS (17 Nov 2026): permission requested from My Highlands, Historic Environment
+    // Scotland and Gleneagles. Swap or remove any photo whose owner declines; set photo '' to show navy.
     // Each place shows its own photo while it is lit. Leave photo '' to show navy.
     // tall: optional portrait version for phones.
     // creditTall / creditTallUrl: credit for the phone photo when it comes from a different source.
