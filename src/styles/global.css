@@ -10,6 +10,7 @@
   --rust-deep: #5a2c21;  /* cards on rust */
   --night: #142029;      /* water */
   --navy: #282e63;       /* brand navy (palette) */
+  --red: #e55454;        /* brand red (palette) */
 
   /* text on dark */
   --cream: #efe6d3;
@@ -73,6 +74,10 @@ p, h1, h2, h3 { margin: 0; font-weight: inherit; }
 .bg-ink { background: var(--ink); }
 .bg-moss { background: var(--moss); }
 .bg-rust { background: var(--rust); }
+/* Brand red ground: text goes white (brand rule), lines and glass in white */
+.bg-red { background: var(--red); color: #fff;
+  --cream: #fff; --cream-bright: #fff; --cream-soft: rgb(255 255 255 / .9); --cream-muted: rgb(255 255 255 / .86);
+  --line: rgb(255 255 255 / .45); --glass: rgb(255 255 255 / .16); --glass-line: rgb(255 255 255 / .4); --card: rgb(255 255 255 / .1); }
 .bg-night { background: var(--night); }
 .section-head { display: flex; flex-direction: column; gap: 28px; }
 .head-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-wrap: wrap; }
