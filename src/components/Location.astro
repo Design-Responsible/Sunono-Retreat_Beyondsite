@@ -4,7 +4,7 @@ import SectionLabel from './SectionLabel.astro';
 import Icon from './Icon.astro';
 const b = location.band;
 ---
-<section id="location" class="section bg-ink loc">
+<section id="location" class="section bg-lilac loc">
   <div class="wrap">
     <div class="head-row">
       <div class="section-head">
@@ -70,7 +70,8 @@ const b = location.band;
   .name { font-size: 18px; line-height: 1.35; }
   .arrows { display: flex; justify-content: flex-end; gap: 8px; margin-top: 40px; }
   .band { position: relative; margin-top: 64px; border-radius: 8px; overflow: hidden; aspect-ratio: 16 / 8.6; min-height: 460px; }
-  .band { background: var(--navy); }
+  .band { background: var(--navy); color: #efe6d3;
+    --cream: #efe6d3; --cream-muted: rgb(239 230 211 / .62); --line: rgb(239 230 211 / .26); }
   .band .shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.06); transition: opacity 1.1s var(--ease), transform 6s var(--ease-out); }
   .band .shot.on { opacity: 1; transform: none; }
   .credit { position: absolute; right: 40px; bottom: 12px; font-size: 10px; letter-spacing: .04em; opacity: 0; transition: opacity .6s; color: rgb(239 230 211 / .7); }

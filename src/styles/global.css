@@ -11,6 +11,7 @@
   --night: #142029;      /* water */
   --navy: #282e63;       /* brand navy (palette) */
   --red: #e55454;        /* brand red (palette) */
+  --lilac: #cfbdcd;      /* brand lilac (guidelines cover) */
 
   /* text on dark */
   --cream: #efe6d3;
@@ -74,6 +75,10 @@ p, h1, h2, h3 { margin: 0; font-weight: inherit; }
 .bg-ink { background: var(--ink); }
 .bg-moss { background: var(--moss); }
 .bg-rust { background: var(--rust); }
+/* Brand lilac ground: text goes navy (brand rule), lines and glass in navy */
+.bg-lilac { background: var(--lilac); color: var(--navy);
+  --cream: var(--navy); --cream-bright: var(--navy); --cream-soft: rgb(40 46 99 / .9); --cream-muted: rgb(40 46 99 / .78);
+  --line: rgb(40 46 99 / .35); --glass: rgb(40 46 99 / .08); --glass-line: rgb(40 46 99 / .3); --card: rgb(40 46 99 / .06); }
 /* Brand red ground: text goes white (brand rule), lines and glass in white */
 .bg-red { background: var(--red); color: #fff;
   --cream: #fff; --cream-bright: #fff; --cream-soft: rgb(255 255 255 / .9); --cream-muted: rgb(255 255 255 / .86);
@@ -90,6 +95,7 @@ p, h1, h2, h3 { margin: 0; font-weight: inherit; }
 .slabel .disc { width: 24px; height: 24px; border-radius: 50%; background: var(--cream); color: var(--ink);
   display: grid; place-items: center; font-size: 11px; font-weight: 500; letter-spacing: 0; }
 .slabel .t-label { color: var(--cream); }
+.bg-lilac .slabel .disc { color: var(--lilac); }
 
 /* buttons */
 .btn { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 20px; border-radius: 999px;
