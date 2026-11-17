@@ -15,6 +15,7 @@ const SLATS = 12;
     <div class="titles">
       <h1 class="t-display l1">{hero.line1}</h1>
       <p class="t-display l2">{hero.line2}</p>
+      <p class="t-lead sub">{hero.sub}</p>
     </div>
     <div class="meta">
       <div class="facts">{hero.place.map((f) => <p>{f}</p>)}</div>
@@ -44,6 +45,7 @@ const SLATS = 12;
   .l1 { animation-delay: .5s; }
   .l2 { animation-delay: .65s; color: var(--cream); }
   @keyframes rise { to { opacity: 1; transform: none; } }
+  .sub { max-width: 34ch; margin-top: 22px; color: var(--cream); opacity: 0; transform: translateY(24px); animation: rise 1.2s .85s var(--ease-out) forwards; }
   .meta { display: flex; gap: 10px 36px; flex-wrap: wrap; font-size: 15px; color: var(--cream-soft); opacity: 0; animation: rise 1.2s .95s var(--ease-out) forwards; }
   .facts { display: flex; gap: 6px; }
   .bars { display: flex; gap: 6px; align-self: center; }

@@ -7,7 +7,8 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const site = {
-  name: 'understorey',
+  name: 'sunono',
+  cta: 'Experience with us', // header button
   email: 'stay@understorey.example',
   phone: '+61 400 000 000',
   address: ['12 Example Road', 'Huon Valley TAS 7109'],
@@ -31,10 +32,11 @@ export const navMore = [
 ];
 
 export const hero = {
-  line1: 'A house in',
-  line2: 'the tall forest.',
-  place: ['Huon Valley, Tasmania', '· 43.0° S'],
-  facts: ['★ 4.98', '· 96 reviews', '· Superhost'],
+  line1: 'A home can speak',
+  line2: 'different languages',
+  sub: 'Some very quiet, some bold with loud character. Whatever the space you may be looking for, Sunono has a bit of everything.',
+  place: ['Scottish countryside', '· 200 years old'],
+  facts: ['15 hectares', '· a private garden and lake'],
   photos: [
     { src: '/images/estate.jpg', alt: 'The house, its lawn and the lake from above' },
     { src: '/images/house.jpg', alt: 'The house' },

@@ -18,13 +18,13 @@ const h = (href: string) => (href.startsWith('#') ? `${base}${href}` : href);
       </div>
     </nav>
     <a class="book" href={h('#book')}>
-      <span class="from">{site.priceFrom}</span><span class="sep" aria-hidden="true"></span><span class="go">Book</span>
+      <span class="go">{site.cta}</span>
     </a>
     <button class="burger" aria-label="Open menu" aria-expanded="false" data-burger><Icon name="menu" /></button>
   </div>
   <div class="sheet" data-sheet>
     {[...nav, ...navMore].map((l) => <a href={h(l.href)}>{l.label}</a>)}
-    <a class="btn btn-cream" href={h('#book')}>Book · {site.priceFrom}</a>
+    <a class="btn btn-cream" href={h('#book')}>{site.cta}</a>
   </div>
 </header>
 
