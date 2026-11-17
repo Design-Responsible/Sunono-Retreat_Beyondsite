@@ -219,3 +219,50 @@ $$('[data-giant] span').forEach((sp) => {
   const upd = () => { const r = sp.getBoundingClientRect(); const p = clamp((innerHeight - r.top) / (r.height * 1.4)); sp.style.setProperty('--gy', `${(1 - p) * 30}%`); };
   addEventListener('scroll', upd, { passive: true }); upd();
 });
+
+/* ── scroll-scrubbed hero (frame sequence on a canvas, Skyline style) ── */
+$$('[data-scrub]').forEach((sec) => {
+  if (reduce) return;
+  const n = +sec.dataset.frames!, base = sec.dataset.base!;
+  const cv = sec.querySelector<HTMLCanvasElement>('canvas')!, ctx = cv.getContext('2d')!;
+  const bar = sec.querySelector<HTMLElement>('[data-scrub-bar]');
+  const set = innerWidth <= 760 ? 's' : 'l';
+  const frames: (HTMLImageElement | null)[] = Array(n).fill(null);
+  let cur = -1, want = 0;
+  const url = (i: number) => `${base}/${set}/f${String(i + 1).padStart(3, '0')}.webp`;
+  const size = () => {
+    const d = Math.min(devicePixelRatio || 1, 2);
+    cv.width = Math.round(cv.clientWidth * d); cv.height = Math.round(cv.clientHeight * d); cur = -1; draw();
+  };
+  // nearest frame that has loaded, so scrolling never shows a blank
+  const nearest = (i: number) => { for (let k = 0; k < n; k++) { if (frames[i - k]) return i - k; if (frames[i + k]) return i + k; } return -1; };
+  const draw = () => {
+    const i = nearest(want); if (i < 0 || i === cur) return;
+    const im = frames[i]!, W = cv.width, H = cv.height, r = im.naturalWidth / im.naturalHeight;
+    const w = W / H > r ? W : H * r, h = W / H > r ? W / r : H;
+    ctx.drawImage(im, (W - w) / 2, (H - h) / 2, w, h); cur = i;
+    sec.classList.add('ready');
+  };
+  const load = (i: number) => new Promise<void>((res) => {
+    if (frames[i]) return res();
+    const im = new Image(); im.decoding = 'async'; im.src = url(i);
+    im.onload = () => { frames[i] = im; if (Math.abs(i - want) < Math.abs(nearest(want) - want) || cur < 0) draw(); res(); };
+    im.onerror = () => res();
+  });
+  const upd = () => {
+    const r = sec.getBoundingClientRect(), total = r.height - innerHeight;
+    const p = clamp(-r.top / total);
+    want = Math.round(p * (n - 1));
+    if (bar) bar.style.transform = `scaleX(${p})`;
+    sec.style.setProperty('--p', p.toFixed(3));
+    requestAnimationFrame(draw);
+  };
+  // first frame now, then a coarse pass, then fill in the gaps
+  (async () => {
+    await load(0); size();
+    const order: number[] = [];
+    for (const step of [8, 4, 2, 1]) for (let i = 0; i < n; i += step) if (!order.includes(i)) order.push(i);
+    for (let k = 0; k < order.length; k += 6) await Promise.all(order.slice(k, k + 6).map(load));
+  })();
+  addEventListener('scroll', upd, { passive: true }); addEventListener('resize', size); upd();
+});
