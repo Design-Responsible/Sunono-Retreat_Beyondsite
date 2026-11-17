@@ -40,7 +40,7 @@ export const hero = {
   photos: [
     { src: '/images/estate.jpg', alt: 'The house, its lawn and the lake from above' },
     { src: '/images/house.jpg', alt: 'The house' },
-    { src: '/images/lake.jpg', alt: 'The lake' },
+    { src: '/images/house-front.jpg', alt: 'The front of the Victorian house through the larch branches' },
     { src: '/images/garden.jpg', alt: 'The garden' },
   ],
 };
