@@ -142,7 +142,7 @@ export const location = {
     places: [
       { name: 'Rumbling Bridge', dist: '1.5 mi', photo: '/images/near-rumbling-bridge.jpg', tall: '/images/near-rumbling-bridge-tall.jpg', alt: 'The two stacked bridges over the gorge at Rumbling Bridge', credit: 'Photo: My Highlands', creditUrl: 'https://www.myhighlands.de/en/rumbling-bridge/' },
       { name: 'Castle Campbell', dist: '3.7 mi', photo: '/images/near-castle-campbell.jpg', tall: '/images/near-castle-campbell-tall.jpg', alt: 'Castle Campbell on its wooded ridge above Dollar Glen', credit: 'Photo: Historic Environment Scotland', creditUrl: 'https://www.historicenvironment.scot/visit/all/castle-campbell/history-and-stories/' },
-      { name: 'Loch Leven', dist: '6.6 mi', photo: '', alt: 'Loch Leven and its island castle', credit: '' },
+      { name: 'Loch Leven', dist: '6.6 mi', photo: '/images/near-loch-leven.jpg', tall: '/images/near-loch-leven-tall.jpg', alt: 'Lochleven Castle on its wooded island in Loch Leven', credit: 'Photo: Historic Environment Scotland', creditUrl: 'https://www.historicenvironment.scot/visit/all/lochleven-castle/' },
       { name: 'Gleneagles', dist: '9 mi', photo: '', alt: 'Gleneagles', credit: '' },
     ],
     line1: 'a mile and a half to the gorge,',
