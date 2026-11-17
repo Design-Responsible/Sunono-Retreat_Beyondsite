@@ -48,8 +48,8 @@ export const hero = {
 export const house = {
   // Words; a {photo:n} token drops a small inline photo chip into the sentence.
   sentence:
-    'A long, low {photo:0} pavilion of charred timber {photo:1}, concrete and glass, with two suites {photo:2} and a bath {photo:3} among the ferns.',
-  chips: ['/images/house.jpg', '/images/wing.jpg', '/images/lawn.jpg', '/images/lake.jpg'],
+    'Explore our luxurious retreats in a secluded 200-year-old {photo:0} Victorian house, set on a 15-hectare estate {photo:1} with a private garden {photo:2} and lake {photo:3}.',
+  chips: ['/images/house.jpg', '/images/estate.jpg', '/images/garden.jpg', '/images/lake.jpg'],
   glanceLabel: 'At a glance',
   glance: ['Two couples', 'A small family', 'Long weekends', 'Working remotely', 'Slow mornings'],
   intro:
