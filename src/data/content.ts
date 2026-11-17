@@ -7,7 +7,7 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const site = {
-  name: 'sunono',
+  name: 'sunono', // footer giant name; header uses the logo image
   cta: 'Experience with us', // header button
   email: 'stay@understorey.example',
   phone: '+61 400 000 000',
