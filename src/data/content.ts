@@ -138,12 +138,13 @@ export const location = {
   band: {
     // Each place shows its own photo while it is lit. Leave photo '' to show navy.
     // tall: optional portrait version for phones.
+    // creditTall / creditTallUrl: credit for the phone photo when it comes from a different source.
     // credit: photographer / licence line, shown small in the corner when set.
     places: [
       { name: 'Rumbling Bridge', dist: '1.5 mi', photo: '/images/near-rumbling-bridge.jpg', tall: '/images/near-rumbling-bridge-tall.jpg', alt: 'The two stacked bridges over the gorge at Rumbling Bridge', credit: 'Photo: My Highlands', creditUrl: 'https://www.myhighlands.de/en/rumbling-bridge/' },
       { name: 'Castle Campbell', dist: '3.7 mi', photo: '/images/near-castle-campbell.jpg', tall: '/images/near-castle-campbell-tall.jpg', alt: 'Castle Campbell on its wooded ridge above Dollar Glen', credit: 'Photo: Historic Environment Scotland', creditUrl: 'https://www.historicenvironment.scot/visit/all/castle-campbell/history-and-stories/' },
       { name: 'Loch Leven', dist: '6.6 mi', photo: '/images/near-loch-leven.jpg', tall: '/images/near-loch-leven-tall.jpg', alt: 'Lochleven Castle on its wooded island in Loch Leven', credit: 'Photo: Historic Environment Scotland', creditUrl: 'https://www.historicenvironment.scot/visit/all/lochleven-castle/' },
-      { name: 'Gleneagles', dist: '9 mi', photo: '', alt: 'Gleneagles', credit: '' },
+      { name: 'Gleneagles', dist: '9 mi', photo: '/images/near-gleneagles.jpg', tall: '/images/near-gleneagles-tall.jpg', alt: 'A pond in the Gleneagles grounds at golden hour', credit: 'Photo: Gleneagles', creditUrl: 'https://gleneagles.com/', creditTall: 'Photo: The Milliardaire', creditTallUrl: 'https://www.themilliardaire.com/en/hotels/gleneagles-hotel-20001/' },
     ],
     line1: 'a mile and a half to the gorge,',
     line2: 'nine to Gleneagles.',

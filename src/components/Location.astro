@@ -42,7 +42,8 @@ const b = location.band;
       <div class="band-shade" aria-hidden="true"></div>
       {b.places.map((pl, i) => pl.credit && (
         <p class:list={['credit', { on: i === 0 }]} data-credit={i}>
-          {pl.creditUrl ? <a href={pl.creditUrl} target="_blank" rel="noopener">{pl.credit}</a> : pl.credit}
+          <span class:list={{ wide: !!pl.creditTall }}>{pl.creditUrl ? <a href={pl.creditUrl} target="_blank" rel="noopener">{pl.credit}</a> : pl.credit}</span>
+          {pl.creditTall && <span class="tall">{pl.creditTallUrl ? <a href={pl.creditTallUrl} target="_blank" rel="noopener">{pl.creditTall}</a> : pl.creditTall}</span>}
         </p>
       ))}
       <p class="line l1">{b.line1}</p>
@@ -74,6 +75,7 @@ const b = location.band;
   .band .shot.on { opacity: 1; transform: none; }
   .credit { position: absolute; right: 40px; bottom: 12px; font-size: 10px; letter-spacing: .04em; opacity: 0; transition: opacity .6s; color: rgb(239 230 211 / .7); }
   .credit.on { opacity: 1; }
+  .credit .tall { display: none; }
   .credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
   .credit:not(.on) { pointer-events: none; }
   .band-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(13 12 10 / .62), rgb(13 12 10 / 0) 45%, rgb(13 12 10 / 0) 60%, rgb(13 12 10 / .62)); }
@@ -89,5 +91,5 @@ const b = location.band;
   .place.on { opacity: 1; }
   .place .t-label { font-size: 11px; }
   .place .t { font-size: clamp(20px, 2vw, 28px); font-weight: 300; margin-top: 4px; }
-  @media (max-width: 700px) { .band { aspect-ratio: 3 / 4; } .places { grid-template-columns: 1fr 1fr; left: 22px; right: 22px; } .l1 { left: 22px; } .l2 { right: 22px; } .line { font-size: clamp(20px, 6vw, 30px); } .credit { right: 22px; bottom: 8px; } }
+  @media (max-width: 700px) { .band { aspect-ratio: 3 / 4; } .places { grid-template-columns: 1fr 1fr; left: 22px; right: 22px; } .l1 { left: 22px; } .l2 { right: 22px; } .line { font-size: clamp(20px, 6vw, 30px); } .credit { right: 22px; bottom: 8px; } .credit .wide { display: none; } .credit .tall { display: inline; } .band-shade { background: linear-gradient(180deg, rgb(13 12 10 / .72), rgb(13 12 10 / .25) 32%, rgb(13 12 10 / 0) 50%, rgb(13 12 10 / .7)); } }
 </style>
