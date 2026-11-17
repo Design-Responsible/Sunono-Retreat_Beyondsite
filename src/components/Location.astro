@@ -32,14 +32,15 @@ const b = location.band;
       </div>
     </div>
 
-    <div class:list={['band', { plain: !b.photo }]} data-band data-reveal>
-      {b.photo && <img src={b.photo} alt="The countryside around the house" loading="lazy" />}
+    <div class="band" data-band data-reveal>
+      {b.places.map((pl, i) => pl.photo && <img class:list={['shot', { on: i === 0 }]} data-shot={i} src={pl.photo} alt={pl.alt} loading="lazy" />)}
       <div class="band-shade" aria-hidden="true"></div>
+      {b.places.map((pl, i) => pl.credit && <p class:list={['credit', { on: i === 0 }]} data-credit={i}>{pl.credit}</p>)}
       <p class="line l1">{b.line1}</p>
       <span class="rule" aria-hidden="true"></span>
       <p class="line l2">{b.line2}</p>
       <div class="places">
-        {b.places.map(([n, t], i) => <div class={`place ${i === 0 ? 'on' : ''}`} data-place={i}><p class="t-label">{n}</p><p class="t">{t}</p></div>)}
+        {b.places.map((pl, i) => <button type="button" class={`place ${i === 0 ? 'on' : ''}`} data-place={i} aria-pressed={i === 0 ? 'true' : 'false'}><span class="t-label">{pl.name}</span><span class="t">{pl.dist}</span></button>)}
       </div>
     </div>
   </div>
@@ -59,17 +60,21 @@ const b = location.band;
   .name { font-size: 18px; line-height: 1.35; }
   .arrows { display: flex; justify-content: flex-end; gap: 8px; margin-top: 40px; }
   .band { position: relative; margin-top: 64px; border-radius: 8px; overflow: hidden; aspect-ratio: 16 / 8.6; min-height: 460px; }
-  .band.plain { background: var(--navy); }
-  .band.plain .band-shade { display: none; }
-  .band img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .band-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(13 12 10 / .5), rgb(13 12 10 / 0) 40%, rgb(13 12 10 / 0) 60%, rgb(13 12 10 / .62)); }
+  .band { background: var(--navy); }
+  .band .shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.06); transition: opacity 1.1s var(--ease), transform 6s var(--ease-out); }
+  .band .shot.on { opacity: 1; transform: none; }
+  .credit { position: absolute; right: 40px; bottom: 12px; font-size: 10px; letter-spacing: .04em; opacity: 0; transition: opacity .6s; color: rgb(239 230 211 / .7); }
+  .credit.on { opacity: 1; }
+  .band-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(13 12 10 / .62), rgb(13 12 10 / 0) 45%, rgb(13 12 10 / 0) 60%, rgb(13 12 10 / .62)); }
   .line { font-family: var(--font-head); position: absolute; font-size: clamp(30px, 4.4vw, 64px); font-weight: 300; letter-spacing: -0.025em; line-height: 1; }
   .l1 { top: 7%; left: 40px; }
   .l2 { top: 23%; right: 40px; }
   .rule { position: absolute; left: 0; right: 0; top: 18.5%; height: 1px; background: rgb(239 230 211 / .7); transform-origin: left; transform: scaleX(0); transition: transform 1.6s .3s var(--ease-out); }
   .band.in .rule { transform: none; }
   .places { position: absolute; left: 40px; right: 40px; bottom: 36px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-  .place { opacity: .38; transition: opacity .6s var(--ease); }
+  .place { display: block; text-align: left; background: none; border: 0; padding: 0; color: inherit; font: inherit; cursor: pointer; opacity: .38; transition: opacity .6s var(--ease); }
+  .place:hover, .place:focus-visible { opacity: .8; }
+  .place .t-label, .place .t { display: block; }
   .place.on { opacity: 1; }
   .place .t-label { font-size: 11px; }
   .place .t { font-size: clamp(20px, 2vw, 28px); font-weight: 300; margin-top: 4px; }

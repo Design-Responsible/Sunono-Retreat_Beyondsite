@@ -112,8 +112,17 @@ $$('[data-tabs]').forEach((root) => {
 /* ── location band: places light up in turn ── */
 $$('[data-band]').forEach((b) => {
   const ps = $$('[data-place]', b); let k = 0;
-  if (ps.length < 2 || reduce) return;
-  setInterval(() => { ps[k].classList.remove('on'); k = (k + 1) % ps.length; ps[k].classList.add('on'); }, 2200);
+  const shots = $$('[data-shot]', b), credits = $$('[data-credit]', b);
+  const show = (n: number) => {
+    k = n;
+    ps.forEach((p, j) => { p.classList.toggle('on', j === n); p.setAttribute('aria-pressed', String(j === n)); });
+    shots.forEach((s) => s.classList.toggle('on', +s.dataset.shot! === n));
+    credits.forEach((c) => c.classList.toggle('on', +c.dataset.credit! === n));
+  };
+  let timer = 0;
+  const start = () => { if (!reduce && ps.length > 1) timer = window.setInterval(() => show((k + 1) % ps.length), 3600); };
+  ps.forEach((p, j) => p.addEventListener('click', () => { clearInterval(timer); show(j); }));
+  start();
 });
 
 /* ── FAQ accordion ── */

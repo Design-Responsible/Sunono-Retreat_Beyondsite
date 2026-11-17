@@ -136,8 +136,14 @@ export const location = {
     ['35 miles', 'St Andrews Castle', 'A ruined bishops’ palace on the cliffs above the North Sea, with its rock-cut bottle dungeon.'],
   ],
   band: {
-    photo: '', // empty until a countryside photo arrives; the band shows in navy
-    places: [['Rumbling Bridge', '1.5 mi'], ['Castle Campbell', '3.7 mi'], ['Loch Leven', '6.6 mi'], ['Gleneagles', '9 mi']],
+    // Each place shows its own photo while it is lit. Leave photo '' to show navy.
+    // credit: photographer / licence line, shown small in the corner when set.
+    places: [
+      { name: 'Rumbling Bridge', dist: '1.5 mi', photo: '', alt: 'The gorge at Rumbling Bridge', credit: '' },
+      { name: 'Castle Campbell', dist: '3.7 mi', photo: '', alt: 'Castle Campbell above Dollar Glen', credit: '' },
+      { name: 'Loch Leven', dist: '6.6 mi', photo: '', alt: 'Loch Leven and its island castle', credit: '' },
+      { name: 'Gleneagles', dist: '9 mi', photo: '', alt: 'Gleneagles', credit: '' },
+    ],
     line1: 'a mile and a half to the gorge,',
     line2: 'nine to Gleneagles.',
   },
