@@ -53,7 +53,7 @@ export const house = {
   glanceLabel: 'At a glance',
   glance: ['Two couples', 'A small family', 'Long weekends', 'Working remotely', 'Slow mornings'],
   intro:
-    'Beyond every window is temperate rainforest: tall gums, tree ferns and the creek below. Arrive, put a record on, and stay put.',
+    'Beyond every window is the estate: old trees, a walled garden and the lake below the lawn. Arrive, find your desk and let the house keep the hours for you.',
   facts: [
     ['Guests', 'up to 4'],
     ['Bedrooms', '2 suites'],
