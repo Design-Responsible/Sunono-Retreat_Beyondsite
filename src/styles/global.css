@@ -15,6 +15,7 @@
   --mint: #c7f2e3;
   --lilac: #c2abc2;
   --pale-blue: #c3d9db;
+  --paper: #fafafa;
 
   /* text on dark */
   --cream: #efe6d3;
@@ -82,7 +83,8 @@ p, h1, h2, h3 { margin: 0; font-weight: inherit; }
 .bg-lilac { background: var(--lilac); }
 .bg-pale-blue { background: var(--pale-blue); }
 .bg-mint { background: var(--mint); }
-.bg-lilac, .bg-pale-blue, .bg-mint { color: var(--navy);
+.bg-paper { background: var(--paper); --rust: var(--paper); --rust-deep: #eeeff3; /* cards on paper */ }
+.bg-lilac, .bg-pale-blue, .bg-mint, .bg-paper { color: var(--navy);
   --cream: var(--navy); --cream-bright: var(--navy); --cream-soft: rgb(40 47 100 / .9); --cream-muted: rgb(40 47 100 / .78);
   --line: rgb(40 47 100 / .35); --glass: rgb(40 47 100 / .08); --glass-line: rgb(40 47 100 / .3); --card: rgb(40 47 100 / .06); }
 /* Brand red ground: text goes white (brand rule), lines and glass in white */
@@ -106,6 +108,7 @@ p, h1, h2, h3 { margin: 0; font-weight: inherit; }
 .bg-lilac .slabel .disc { color: var(--lilac); }
 .bg-pale-blue .slabel .disc { color: var(--pale-blue); }
 .bg-mint .slabel .disc { color: var(--mint); }
+.bg-paper .slabel .disc { color: var(--paper); }
 
 /* buttons */
 .btn { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 20px; border-radius: 999px;
