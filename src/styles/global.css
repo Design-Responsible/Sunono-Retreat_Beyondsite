@@ -78,8 +78,11 @@ p, h1, h2, h3 { margin: 0; font-weight: inherit; }
 .bg-ink { background: var(--ink); }
 .bg-moss { background: var(--moss); }
 .bg-rust { background: var(--rust); }
-/* Brand lilac ground: text goes navy (brand rule), lines and glass in navy */
-.bg-lilac { background: var(--lilac); color: var(--navy);
+/* Light brand grounds (lilac, pale blue, mint): text goes navy (brand rule), lines and glass in navy */
+.bg-lilac { background: var(--lilac); }
+.bg-pale-blue { background: var(--pale-blue); }
+.bg-mint { background: var(--mint); }
+.bg-lilac, .bg-pale-blue, .bg-mint { color: var(--navy);
   --cream: var(--navy); --cream-bright: var(--navy); --cream-soft: rgb(40 47 100 / .9); --cream-muted: rgb(40 47 100 / .78);
   --line: rgb(40 47 100 / .35); --glass: rgb(40 47 100 / .08); --glass-line: rgb(40 47 100 / .3); --card: rgb(40 47 100 / .06); }
 /* Brand red ground: text goes white (brand rule), lines and glass in white */
@@ -100,6 +103,8 @@ p, h1, h2, h3 { margin: 0; font-weight: inherit; }
   display: grid; place-items: center; font-size: 11px; font-weight: 500; letter-spacing: 0; }
 .slabel .t-label { color: var(--cream); }
 .bg-lilac .slabel .disc { color: var(--lilac); }
+.bg-pale-blue .slabel .disc { color: var(--pale-blue); }
+.bg-mint .slabel .disc { color: var(--mint); }
 
 /* buttons */
 .btn { display: inline-flex; align-items: center; gap: 10px; height: 40px; padding: 0 20px; border-radius: 999px;
