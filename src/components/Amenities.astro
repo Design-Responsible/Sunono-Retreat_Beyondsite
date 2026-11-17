@@ -2,7 +2,7 @@
 import { amenities } from '../data/content';
 import SectionLabel from './SectionLabel.astro';
 ---
-<section id="amenities" class="am bg-night" data-tabs>
+<section id="amenities" class="am bg-lilac" data-tabs>
   <div class="col">
     <div class="section-head">
       <SectionLabel n="04" label="amenities" />
@@ -34,8 +34,8 @@ import SectionLabel from './SectionLabel.astro';
   .tabs { display: flex; flex-wrap: wrap; gap: 8px; }
   [role='tab'] { height: 36px; padding: 0 14px; border-radius: 999px; background: var(--glass); font-size: 15px; font-weight: 450; color: var(--cream); transition: background .3s, color .3s; }
   [role='tab'] span { color: var(--cream-muted); margin-left: 4px; font-weight: 400; }
-  [role='tab'][aria-selected='true'] { background: var(--cream); color: var(--ink); }
-  [role='tab'][aria-selected='true'] span { color: rgb(13 12 10 / .55); }
+  [role='tab'][aria-selected='true'] { background: var(--cream); color: var(--on-cream); }
+  [role='tab'][aria-selected='true'] span { color: var(--on-cream); opacity: .7; }
   .panel .row { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--line);
     font-size: 18px; animation: rowin .6s var(--ease-out) both; animation-delay: var(--d); }
   .panel .row:last-child { border-bottom: 0; }
