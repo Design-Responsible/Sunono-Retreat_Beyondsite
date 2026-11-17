@@ -137,9 +137,10 @@ export const location = {
   ],
   band: {
     // Each place shows its own photo while it is lit. Leave photo '' to show navy.
+    // tall: optional portrait version for phones.
     // credit: photographer / licence line, shown small in the corner when set.
     places: [
-      { name: 'Rumbling Bridge', dist: '1.5 mi', photo: '', alt: 'The gorge at Rumbling Bridge', credit: '' },
+      { name: 'Rumbling Bridge', dist: '1.5 mi', photo: '/images/near-rumbling-bridge.jpg', tall: '/images/near-rumbling-bridge-tall.jpg', alt: 'The two stacked bridges over the gorge at Rumbling Bridge', credit: 'Photo: My Highlands', creditUrl: 'https://www.myhighlands.de/en/rumbling-bridge/' },
       { name: 'Castle Campbell', dist: '3.7 mi', photo: '', alt: 'Castle Campbell above Dollar Glen', credit: '' },
       { name: 'Loch Leven', dist: '6.6 mi', photo: '', alt: 'Loch Leven and its island castle', credit: '' },
       { name: 'Gleneagles', dist: '9 mi', photo: '', alt: 'Gleneagles', credit: '' },
