@@ -31,6 +31,7 @@
   --panel: rgb(20 19 16 / 0.86);
 
   --font: 'Figtree Variable', 'Figtree', system-ui, sans-serif;
+  --font-head: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', var(--font); /* headings */
   --pad: clamp(20px, 3.4vw, 48px);
   --max: 1440px;
   --radius: 16px;
@@ -62,6 +63,9 @@ p, h1, h2, h3 { margin: 0; font-weight: inherit; }
 .t-small     { font-size: 15px; line-height: 1.55; color: var(--cream-soft); }
 .t-caption   { font-size: 14px; line-height: 1.5; color: var(--cream-muted); }
 .t-label     { font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 450; line-height: 1.4; }
+
+/* headings use Bricolage Grotesque; body stays Figtree */
+.t-display, .t-headline, .t-statement, .t-title, .t-card, h1, h2, h3 { font-family: var(--font-head); }
 
 /* ── layout ─────────────────────────────────────────────── */
 .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
