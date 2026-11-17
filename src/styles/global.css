@@ -88,7 +88,8 @@ p, h1, h2, h3 { margin: 0; font-weight: inherit; }
 /* Brand red ground: text goes white (brand rule), lines and glass in white */
 .bg-red { background: var(--red); color: #fff;
   --cream: #fff; --cream-bright: #fff; --cream-soft: rgb(255 255 255 / .9); --cream-muted: rgb(255 255 255 / .86);
-  --line: rgb(255 255 255 / .45); --glass: rgb(255 255 255 / .16); --glass-line: rgb(255 255 255 / .4); --card: rgb(255 255 255 / .1); }
+  --line: rgb(255 255 255 / .45); --glass: rgb(255 255 255 / .16); --glass-line: rgb(255 255 255 / .4); --card: rgb(255 255 255 / .1);
+  --rust: var(--red); --rust-deep: #bd3239; /* cards sit a shade deeper than the red */ }
 .bg-night { background: var(--night); }
 .bg-navy { background: var(--navy); }
 .section-head { display: flex; flex-direction: column; gap: 28px; }
