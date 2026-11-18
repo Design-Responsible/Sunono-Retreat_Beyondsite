@@ -93,7 +93,7 @@ p, h1, h2, h3 { margin: 0; font-weight: inherit; }
   --line: rgb(255 255 255 / .45); --glass: rgb(255 255 255 / .16); --glass-line: rgb(255 255 255 / .4); --card: rgb(255 255 255 / .1);
   --rust: var(--red); --rust-deep: #bd3239; /* cards sit a shade deeper than the red */ }
 .bg-night { background: var(--night); }
-.bg-navy { background: var(--navy); }
+.bg-navy { background: var(--navy); --rust: var(--navy); --rust-deep: #363e7a; /* cards a shade lighter than navy */ }
 .section-head { display: flex; flex-direction: column; gap: 28px; }
 .head-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px; flex-wrap: wrap; }
 
